@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Tue Nov  4 17:21:20 2008 -->
+<!--Generated with glade3 3.4.5 on Fri Dec 19 06:25:15 2008 -->
 <glade-interface>
   <widget class="GtkWindow" id="wnd_main">
     <property name="title" translatable="yes">OCrypt</property>
@@ -23,6 +23,7 @@ Decrypt</property>
             <child>
               <widget class="GtkComboBox" id="cmb_algo">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="active">0</property>
                 <property name="items" translatable="yes">AES 256-bit
 Triple DES
@@ -34,56 +35,9 @@ Blow Fish</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="btn_start">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="label" translatable="yes">Start</property>
-                <property name="response_id">0</property>
-                <signal name="clicked" handler="on_btn_start_clicked"/>
-              </widget>
-              <packing>
-                <property name="position">2</property>
-              </packing>
-            </child>
-          </widget>
-        </child>
-        <child>
-          <widget class="GtkHBox" id="hbox1">
-            <property name="visible">True</property>
-            <child>
-              <widget class="GtkFrame" id="frame1">
-                <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">GTK_SHADOW_NONE</property>
-                <child>
-                  <widget class="GtkAlignment" id="alignment1">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <widget class="GtkEntry" id="txt_passwd">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="visibility">False</property>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label1">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Password&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </widget>
-                  <packing>
-                    <property name="type">label_item</property>
-                  </packing>
-                </child>
-              </widget>
-            </child>
-            <child>
               <widget class="GtkCheckButton" id="chk_base64">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="label" translatable="yes">Base64</property>
                 <property name="response_id">0</property>
@@ -91,13 +45,10 @@ Blow Fish</property>
                 <signal name="toggled" handler="on_chk_base64_toggled"/>
               </widget>
               <packing>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </widget>
-          <packing>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
           <widget class="GtkFrame" id="frame2">
@@ -111,6 +62,7 @@ Blow Fish</property>
                 <child>
                   <widget class="GtkFileChooserButton" id="fcb_source">
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <signal name="file_set" handler="on_fcb_source_file_set"/>
                   </widget>
                 </child>
@@ -128,7 +80,7 @@ Blow Fish</property>
             </child>
           </widget>
           <packing>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -143,6 +95,8 @@ Blow Fish</property>
                 <child>
                   <widget class="GtkFileChooserButton" id="fcb_output">
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
                     <signal name="file_set" handler="on_fcb_output_file_set"/>
                   </widget>
                 </child>
@@ -156,6 +110,60 @@ Blow Fish</property>
               </widget>
               <packing>
                 <property name="type">label_item</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHBox" id="hbox1">
+            <property name="visible">True</property>
+            <child>
+              <widget class="GtkFrame" id="frame1">
+                <property name="visible">True</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">GTK_SHADOW_NONE</property>
+                <child>
+                  <widget class="GtkAlignment" id="alignment1">
+                    <property name="visible">True</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <widget class="GtkEntry" id="txt_passwd">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="visibility">False</property>
+                        <signal name="key_press_event" handler="on_txt_passwd_key_press_event"/>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label1">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Password&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="type">label_item</property>
+                  </packing>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkButton" id="btn_start">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="label" translatable="yes">Start</property>
+                <property name="response_id">0</property>
+                <signal name="clicked" handler="on_btn_start_clicked"/>
+              </widget>
+              <packing>
+                <property name="position">1</property>
               </packing>
             </child>
           </widget>
